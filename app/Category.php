@@ -1,0 +1,34 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    use \Dimsav\Translatable\Translatable;
+
+    protected $guarded = [];
+    public $translatedAttributes = ['name'];
+
+    public function products()
+    {
+    	return  $this->hasMany( Product::class );
+    }
+
+
+
+
+
+//    public function products()
+//    {
+//        return $this->hasMany(Product::class);
+//
+//    }//end of products
+
+public function getNameAttribute($value)
+{
+    return ucfirst($value);
+}
+
+}//end of model
